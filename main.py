@@ -16,8 +16,15 @@ def menu():
                 cadastrar_Funcionario()
                 continue
             case '2':
-                listar_funcionarios(funcionarios)
-                continue
+                print("1. Linha")
+                print("2. Tabela")
+                try:
+                    escolha2 = int(input("Gostaria de visualizar em: "))
+                    listar_funcionarios(funcionarios, escolha2)
+                    continue
+                except ValueError:
+                    print("Escolha apenas números.")
+                    break
             case '3':
                 nome = input("Qual é o nome do funcionario que você deseja buscar? ")
                 buscar_por_nome(nome, funcionarios)
