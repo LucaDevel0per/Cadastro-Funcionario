@@ -59,7 +59,7 @@ def cadastrar_Funcionario():
         "nome": funcionario.nome,
         "idade": funcionario.idade,
         "cargo": cargo,
-        "salario": funcionario.salario_base
+        "salario_base": funcionario.salario_base
     })
 
     print(f"\nFuncionário '{nome}' cadastrado com sucesso!")
@@ -82,4 +82,14 @@ def listar_funcionarios(lista):
         
         print(f"{i}. Nome: {nome} | Idade: {idade} | Cargo: {cargo} | Salário: R${salario:.2f}")
     print("=============================")
+
+def buscar_por_nome(nome, lista):
+    if not lista:
+        print("\nNão há funcionários cadastrados!")
+        return
+    for f in lista:
+        if f['nome'] == nome:
+            print(f"Nome: {nome} | Idade: {f['idade']} | Cargo: {f['cargo']} | Salário: R${f['salario_base']:.2f}")
+            return
+    print("Funcionario não cadastrado.")
 
