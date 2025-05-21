@@ -1,6 +1,7 @@
 from models.gerente import Gerente
 from models.desenvolvedor import Desenvolvedor
 from models.estagiario import Estagiario
+from services.persistencia import salvar_funcionarios_csv
 from db.funcionarios import funcionarios
 
 
@@ -61,6 +62,8 @@ def cadastrar_Funcionario():
         "cargo": cargo,
         "salario_base": funcionario.salario_base
     })
+
+    salvar_funcionarios_csv(funcionarios)
 
     print(f"\nFuncionário '{nome}' cadastrado com sucesso!")
     print(f"Idade: {idade} | Cargo: {cargo} | Salário base: R${salario:.2f}")
