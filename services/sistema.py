@@ -3,6 +3,7 @@ from models.desenvolvedor import Desenvolvedor
 from models.estagiario import Estagiario
 from services.persistencia import salvar_funcionarios_csv
 from db.funcionarios import funcionarios
+from utils.visuais import exibir_tabela
 
 
 cargos = ['Gerente', 'Desenvolvedor', 'Estagiario']
@@ -74,17 +75,19 @@ def listar_funcionarios(lista):
         print("\nNão há funcionários cadastrados!")
         return
     
-    print("\n=== Lista de Funcionários ===")
-    for i, f in enumerate(lista, 1):
-        # Formatação amigável dos dados do funcionário
-        nome = f.get("nome", "N/A")
-        idade = f.get("idade", "N/A")
-        cargo = f.get("cargo", "N/A")
-        # Verificar se a chave é "Salario base" ou "salario" ou "salario_base"
-        salario = f.get("Salario base") or f.get("salario") or f.get("salario_base", 0)
+    exibir_tabela(lista)
+    
+    # print("\n=== Lista de Funcionários ===")
+    # for i, f in enumerate(lista, 1):
+    #     # Formatação amigável dos dados do funcionário
+    #     nome = f.get("nome", "N/A")
+    #     idade = f.get("idade", "N/A")
+    #     cargo = f.get("cargo", "N/A")
+    #     # Verificar se a chave é "Salario base" ou "salario" ou "salario_base"
+    #     salario = f.get("Salario base") or f.get("salario") or f.get("salario_base", 0)
         
-        print(f"{i}. Nome: {nome} | Idade: {idade} | Cargo: {cargo} | Salário: R${salario:.2f}")
-    print("=============================")
+    #     print(f"{i}. Nome: {nome} | Idade: {idade} | Cargo: {cargo} | Salário: R${salario:.2f}")
+    # print("=============================")
 
 def buscar_por_nome(nome, lista):
     if not lista:
